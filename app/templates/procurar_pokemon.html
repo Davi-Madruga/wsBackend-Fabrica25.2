@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurar Pokemon</title>
+</head>
+<body>
+    <h1>Procurando Pokemon...</h1>
+    <form action="{% url 'criar_pokemon' %}" method="get">
+        {% csrf_token %}
+    <p>Digite o nome ou o ID do pokemon </p>
+    {{ form.nome }} <br><br>
+    <button type="submit">Procurar</button>
+    </form>
+</body>
+</html>
