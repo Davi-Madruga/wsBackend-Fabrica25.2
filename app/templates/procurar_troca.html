@@ -11,7 +11,7 @@
     {% csrf_token %}
     <p>Pokemon atual: {{ pokemon_atual.nome }} </p>
     <input type="hidden" name="id_pokemon" value="{{ pokemon_atual.id_pokemon }}">
-    <input type="hidden" name="nome" value="{{ pokemon_atual.nome }}">
+    <input type="hidden" name="nome_pokemon" value="{{ pokemon_atual.nome }}">
     <input type="hidden" name="tipos" value="{{ pokemon_atual.tipos }}">
     <input type="hidden" name="altura" value="{{ pokemon_atual.altura }}">
     <input type="hidden" name="peso" value="{{ pokemon_atual.peso }}">
