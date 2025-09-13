@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurar Pokemon</title>
+</head>
+<body>
+    <h1>Procurando Pokemon...</h1>
+    <form action="{% url 'atualizar_pokemon' pk=pokemon_atual.pk %}" method="get">
+    {% csrf_token %}
+    <p>Pokemon atual: {{ pokemon_atual.nome }} </p>
+    <input type="hidden" name="id_pokemon" value="{{ pokemon_atual.id_pokemon }}">
+    <input type="hidden" name="nome" value="{{ pokemon_atual.nome }}">
+    <input type="hidden" name="tipos" value="{{ pokemon_atual.tipos }}">
+    <input type="hidden" name="altura" value="{{ pokemon_atual.altura }}">
+    <input type="hidden" name="peso" value="{{ pokemon_atual.peso }}">
+    <p>Digite o nome ou o ID do pokemon que voce deseja trocar por </p>
+    {{ form.nome }} <br><br>
+    <button type="submit">Procurar</button>
+    </form>
+</body>
+</html>
