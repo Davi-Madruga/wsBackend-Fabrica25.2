@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Ataque</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1>Ataque</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.nome.label_tag }} <br>
-        {{ form.nome }} <br>
-        <input type="hidden" name="pokemon" value="{{ ataque.pokemon.pk }}">
-        <button type="submit">Enviar</button> | <a href="{% url 'listar_ataques' %}"><button type="button">Cancelar</button></a>
-    </form>
+    <h1 class='titulopagina'>Ataque</h1>
+    <div class='meio'>
+        <div class='mensagem'>
+        <form method="post">
+            {% csrf_token %}
+            <p>Quer que {{ ataque.pokemon }} esqueça {{ ataque.nome }} e aprenda:</p>
+            {{ form.nome }} <br>
+            <input type="hidden" name="pokemon" value="{{ ataque.pokemon.pk }}">
+            <button type="submit" class='verde'>Enviar</button> | <a href="{% url 'listar_ataques' %}"><button type="button" class='cancelar'>Cancelar</button></a>
+        </form>
+        </div>
+    </div>
 </body>
 </html>

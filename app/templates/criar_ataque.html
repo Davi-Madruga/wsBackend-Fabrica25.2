@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Ataque</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1>Quer ensinar {{ ataque.nome }} para {{ ataque.pokemon }}</h1>
-    <p>{{ ataque.id_ataque }}</p>
-    <p>{{ ataque.tipo }}</p>
-    <p>{{ ataque.pp }}</p>
-    <p>{{ ataque.power }}</p>
-    <p>{{ ataque.accuracy }}</p>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="pokemon" value="{{ ataque.pokemon.pk }}">
-        <input type="hidden" name="id_ataque" value="{{ ataque.id_ataque }}">
-        <input type="hidden" name="nome" value="{{ ataque.nome }}">
-        <input type="hidden" name="tipo" value="{{ ataque.tipo }}">
-        <input type="hidden" name="pp" value="{{ ataque.pp }}">
-        <input type="hidden" name="power" value="{{ ataque.power }}">
-        <input type="hidden" name="accuracy" value="{{ ataque.accuracy }}">
-        <button type="submit">ENSINAR</button> | <a href="{% url 'procurar_ataque' %}"><button type="button">CANCELAR</button></a>
-    </form>
+    <h1>Quer ensinar <i>{{ ataque.nome }}</i> para {{ ataque.pokemon }}</h1>
+    <div class='meio'>
+        <table class="tabela">
+            <tr><td>ID</td><td>{{ ataque.id_ataque }}</td></tr>
+            <tr><td>Tipo</td><td>{{ ataque.tipo }}</td></tr>
+            <tr><td>PP</td><td>{{ ataque.pp }}</td></tr>
+            <tr><td>Power</td><td>{{ ataque.power }}</td></tr>
+            <tr><td>Accuracy</td><td>{{ ataque.accuracy }}</td></tr>
+        </table>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="pokemon" value="{{ ataque.pokemon.pk }}">
+            <input type="hidden" name="id_ataque" value="{{ ataque.id_ataque }}">
+            <input type="hidden" name="nome" value="{{ ataque.nome }}">
+            <input type="hidden" name="tipo" value="{{ ataque.tipo }}">
+            <input type="hidden" name="pp" value="{{ ataque.pp }}">
+            <input type="hidden" name="power" value="{{ ataque.power }}">
+            <input type="hidden" name="accuracy" value="{{ ataque.accuracy }}">
+            <button type="submit" class='verde'>Ensinar</button> | <a href="{% url 'procurar_ataque' %}"><button type="button" class='cancelar'>Cancelar</button></a>
+        </form>
+    </div>
 </body>
 </html>

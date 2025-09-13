@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desaprendendo Ataque</title>
+    <title>Esquecer Ataque</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1>Desaprendendo...</h1>
-    <form method="post">
-        {% csrf_token %}
-        <p>Você tem certeza que quer que deseja {{ataque.pokemon}} desaprenda {{ ataque.nome }} </p>
-        <button type="submit">Desaprender</button>
-    </form>
+    <h1 class='titulopagina'>Esquecer</h1>
+    <div class='meio'>
+        <div class='mensagem'>
+            <form method="post">
+                {% csrf_token %}
+                <p>Você tem certeza que quer que {{ataque.pokemon}} esqueça {{ ataque.nome }} </p>
+                <button type="submit" class='deletar'>Esquecer</button>  | <a href="{% url 'listar_ataques' %}"><button type="button" class='cancelar'>Cancelar</button></a>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ataques</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1>Ataques</h1><a href="{% url 'listar_pokemons' %}"><button>Pokemons</button></a>
+    <h1 class='titulopagina'>Ataques</h1><a href="{% url 'listar_pokemons' %}"><button class='trocar'>Pokemons</button></a>
     {% if ataques %}
-    <table border='1'>
+    <table class='tabela'>
         <tr>
             <th>Usuario</th>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Tipo</th>
+            <th>#</th>
+            <th>NOME</th>
+            <th>TIPO</th>
             <th>PP</th>
-            <th>Power</th>
-            <th>Accuracy</th>
-            <th colspan="2">Ações</th>
+            <th>POWER</th>
+            <th>ACCURACY</th>
+            <th colspan="2">AÇÕES</th>
         </tr>
         {% for ataque in ataques %}
         <tr>
@@ -28,14 +30,14 @@
             <td>{{ ataque.pp }}</td>
             <td>{{ ataque.power }}</td>
             <td>{{ ataque.accuracy }}</td>
-            <td><a href="{% url 'atualizar_ataque' pk=ataque.pk %}"><button>Trocar</button></a></td>
-            <td><a href="{% url 'deletar_ataque' pk=ataque.pk %}"><button>Desaprender</button></a></td>
+            <td><a href="{% url 'atualizar_ataque' pk=ataque.pk %}"><button class='atualizar'>Trocar</button></a></td>
+            <td><a href="{% url 'deletar_ataque' pk=ataque.pk %}"><button class='deletar'>Esquecer</button></a></td>
         </tr>
         {% endfor %}
     </table>
     {% else %}
     <p>Seus Pokemons não sabem nenhum Ataque</p>
     {% endif %}
-    <a href="{% url 'procurar_ataque' %}"><button>Aprender</button></a>
+    <a href="{% url 'procurar_ataque' %}"><button class='cadastrar'>Aprender</button></a>
 </body>
 </html>
