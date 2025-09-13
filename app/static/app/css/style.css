@@ -13,8 +13,8 @@ body {
 
 .trocar {
     position: absolute;
-    top: 50px;
-    left: 50px;
+    top: 55px;
+    left: 450px;
 }
 
 .tabela {
@@ -53,9 +53,9 @@ tr {
 
 .cadastrar {
     background-color: rgb(97, 226, 97);
-    position: relative;
-    left: 300px;
-    top: 30px;
+    position: absolute;
+    top: 55px;
+    right: 450px;
 }
 .verde{
     background-color: rgb(81, 255, 81);

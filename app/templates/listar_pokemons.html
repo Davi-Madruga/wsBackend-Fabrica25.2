@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1 class="titulopagina">POKÉDEX</h1><a href="{% url 'listar_ataques' %}"><button class="trocar">Ataques</button></a>
+    <h1 class="titulopagina">POKÉDEX</h1>
     {% if pokemons %}
+    <a href="{% url 'listar_ataques' %}"><button class="trocar">Ataques</button></a>
     <table class="tabela">
         <thead>
             <tr>
