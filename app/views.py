@@ -37,12 +37,18 @@ def criar_pokemon(request):
                 pokemon.altura = pokemon_info['height']
                 pokemon.peso = pokemon_info['weight']
                 return render(request,'criar_pokemon.html',{'pokemon':pokemon})
-
-def atualizar_pokemon(request):
+            return render(request,'procurar_pokemon.html',{'form':form})   
+         
+def procurar_troca(request,pk):
     pass
 
-def procurar_troca(request):
+def atualizar_pokemon(request,pk):
     pass
 
-def deletar_pokemon(request):
-    pass
+def deletar_pokemon(request,pk):
+    pokemon = Pokemon.objects.get(pk=pk)
+    if request.method == 'POST':
+        pokemon.delete()
+        return redirect('listar_pokemons')
+    else:
+        return render(request,'deletar_pokemon.html',{'pokemon':pokemon})
