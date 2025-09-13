@@ -93,11 +93,11 @@ def deletar_pokemon(request,pk):
 
 def listar_ataques(request):
     ataques = Ataque.objects.all().order_by('pokemon')
-    return render(request,'zlistar_ataques.html',{'ataques':ataques})
+    return render(request,'listar_ataques.html',{'ataques':ataques})
 
 def procurar_ataque(request):
     form = AtaqueForm()
-    return render(request,'zprocurar_ataque.html',{'form':form})
+    return render(request,'procurar_ataque.html',{'form':form})
 
 def criar_ataque(request):
     if request.method == 'POST':
@@ -127,13 +127,33 @@ def criar_ataque(request):
                 ataque.pp = ataque_info['pp']
                 ataque.power = ataque_info['power'] or '---'
                 ataque.accuracy = ataque_info['accuracy'] or '---'
-                return render(request,'zcriar_ataque.html',{'ataque':ataque})
-            return render(request,'zprocurar_ataque.html',{'form':form})
+                return render(request,'criar_ataque.html',{'ataque':ataque})
+            return render(request,'procurar_ataque.html',{'form':form})
         else:
-            return render(request,'zprocurar_ataque.html',{'form':form})
+            return render(request,'procurar_ataque.html',{'form':form})
 
 def atualizar_ataque(request,pk):
-    pass
+    ataque = Ataque.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = AtaqueForm(request.POST,instance=ataque)
+        if form.is_valid():
+            ataque_name = form.cleaned_data['nome']
+            ataque_info = get_ataque(ataque_name)
+            if ataque_info:
+                ataque.nome = ataque_info['name'].capitalize()          
+                ataque.pp = ataque_info['pp'] or '---'
+                ataque.power = ataque_info['power'] or '---'
+                ataque.accuracy = ataque_info['accuracy'] or '---'
+                pokemon_pk = request.POST.get('pokemon')
+                ataque.pokemon = Pokemon.objects.get(pk=pokemon_pk)
+                ataque.id_ataque = ataque_info['id']
+                ataque.tipo = ataque_info['type']['name']
+                ataque.save()
+                return redirect('listar_ataques')
+        return render(request,'atualizar_ataque.html',{'form':form})
+    else:
+        form = AtaqueForm(instance=ataque)
+        return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque})
 
 def deletar_ataque(request,pk):
     pass
