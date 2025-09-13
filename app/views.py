@@ -45,7 +45,39 @@ def procurar_troca(request,pk):
     return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form})
 
 def atualizar_pokemon(request,pk):
-    pass
+    pokemon_atual = Pokemon.objects.get(pk=pk)
+    if request.method == 'POST':
+        pokemon_atual.id_pokemon = request.POST.get('id_pokemon')
+        pokemon_atual.nome = request.POST.get('nome')
+        pokemon_atual.tipos = request.POST.get('tipos')
+        pokemon_atual.altura = request.POST.get('altura')
+        pokemon_atual.peso = request.POST.get('peso')
+        pokemon_atual.save()
+        return redirect('listar_pokemons')
+    else:
+        pokemon_atual.id_pokemon = request.GET.get('id_pokemon')
+        pokemon_atual.nome = request.GET.get('nome_pokemon')
+        pokemon_atual.tipos = request.GET.get('tipos')
+        pokemon_atual.altura = request.GET.get('altura')
+        pokemon_atual.peso = request.GET.get('peso')
+        form = PokemonForm(request.GET)
+        if form.is_valid():
+            pokemon_name = form.cleaned_data['nome']
+            pokemon_info = get_pokemon(pokemon_name)
+            if pokemon_info:
+                pokemon = Pokemon()
+                pokemon.id_pokemon = pokemon_info['id']
+                pokemon.nome = pokemon_info['name']
+                tipos = '|'
+                for t in pokemon_info['types']:
+                    tipos += f"{t['type']['name']}|"
+                pokemon.tipos = tipos
+                pokemon.altura = pokemon_info['height']
+                pokemon.peso = pokemon_info['weight']
+                return render(request,'atualizar_pokemon.html',{'pokemon':pokemon,'pokemon_atual':pokemon_atual})            
+            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form})
+        else:
+            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form})
 
 def deletar_pokemon(request,pk):
     pokemon = Pokemon.objects.get(pk=pk)
