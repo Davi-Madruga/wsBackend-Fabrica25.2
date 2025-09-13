@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Pokemon,Ataque
 from .forms import PokemonForm
+from .pokeapi import get_pokemon,get_ataque
 
 def listar_pokemons(request):
     pokemons = Pokemon.objects.all().order_by('id_pokemon')
