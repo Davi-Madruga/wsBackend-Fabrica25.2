@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurar Ataque</title>
+</head>
+<body>
+    <h1>Aprendendo Ataque...</h1>
+    <form action="{% url 'criar_ataque' %}" method="get">
+    {% csrf_token %}
+    {{ form.pokemon.label_tag}}
+    {{ form.pokemon }}
+    <p>Digite o nome ou o ID do ataque </p>
+    {{ form.nome }} <br><br>
+    <button type="submit">Procurar</button>
+    </form>
+</body>
+</html>
