@@ -92,7 +92,8 @@ def deletar_pokemon(request,pk):
 #ATAQUES
 
 def listar_ataques(request):
-    pass
+    ataques = Ataque.objects.all()
+    return render(request,'zlistar_ataques.html',{'ataques':ataques})
 
 def procurar_ataque(request):
     pass
