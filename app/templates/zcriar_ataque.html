@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar ataque</title>
+</head>
+<body>
+    <h1>Quer ensinar {{ ataque.nome }} para {{ ataque.pokemon }}</h1>
+    <p>{{ ataque.id_ataque }}</p>
+    <p>{{ ataque.tipo }}</p>
+    <p>{{ ataque.pp }}</p>
+    <p>{{ ataque.power }}</p>
+    <p>{{ ataque.accuracy }}</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="pokemon" value="{{ ataque.pokemon }}">
+        <input type="hidden" name="id_ataque" value="{{ ataque.id_ataque }}">
+        <input type="hidden" name="nome" value="{{ ataque.nome }}">
+        <input type="hidden" name="tipo" value="{{ ataque.tipo }}">
+        <input type="hidden" name="pp" value="{{ ataque.pp }}">
+        <input type="hidden" name="power" value="{{ ataque.power }}">
+        <input type="hidden" name="accuracy" value="{{ ataque.accuracy }}">
+        <button type="submit">Ensinar</button> | <a href="{% url 'procurar_ataque' %}"><button type="button">Cancelar</button></a>
+    </form>
+</body>
+</html>
