@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ataques</title>
+</head>
+<body>
+    <h1>Ataques</h1><a href="{% url 'listar_pokemons' %}"><button>Pokemons</button></a>
+    {% if ataques %}
+    <table>
+        <tr>
+            <th>Usuario</th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>PP</th>
+            <th>Power</th>
+            <th>Accuracy</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        {% for ataque in ataques %}
+        <tr>
+            <td>{{ ataque.pokemon }}</td>
+            <td>{{ ataque.id_ataque }}</td>
+            <td>{{ ataque.nome }}</td>
+            <td>{{ ataque.tipo }}</td>
+            <td>{{ ataque.pp }}</td>
+            <td>{{ ataque.power }}</td>
+            <td>{{ ataque.accuracy }}</td>
+            <td><a href="{% url 'atualizar_ataque' pk=ataque.pk %}"><button>Trocar</button></a></td>
+            <td><a href="{% url 'deletar_ataque' pk=ataque.pk %}"><button>Desaprender</button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>Seus Pokemons não sabem nenhum Ataque</p>
+    {% endif %}
+    <a href="{% url 'criar_ataque' %}"><button>Aprender</button></a>
+</body>
+</html>
