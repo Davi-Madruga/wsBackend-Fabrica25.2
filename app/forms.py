@@ -6,8 +6,21 @@ class PokemonForm(forms.ModelForm):
         model = Pokemon
         fields = ['nome']
         widgets = {
-            'nome' : forms.TextInput()
+            'nome' : forms.TextInput(),
         }
         labels = {
-            'nome' : 'Nome'
+            'nome' : 'Nome',
+        }
+
+class AtaqueForm(forms.ModelForm):
+    class Meta:
+        model = Ataque
+        fields = ['pokemon','nome']
+        widgets = {
+            'pokemon' : forms.Select(),
+            'nome' : forms.TextInput(),
+        }
+        labels = {
+            'pokemon' : 'Pokemon',
+            'nome' : 'Nome',
         }
