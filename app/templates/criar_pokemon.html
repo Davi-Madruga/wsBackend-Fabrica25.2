@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Pokemon</title>
+</head>
+<body>
+    <h1>Esse pokemon?</h1>
+    <p>{{ pokemon.id_pokemon }}</p>
+    <p>{{ pokemon.nome }}</p>
+    <p>{{ pokemon.tipos }}</p>
+    <p>{{ pokemon.altura }}</p>
+    <p>{{ pokemon.peso }}</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id_pokemon" value="{{ pokemon.id_pokemon }}">
+        <input type="hidden" name="nome" value="{{ pokemon.nome }}">
+        <input type="hidden" name="tipos" value="{{ pokemon.tipos }}">
+        <input type="hidden" name="altura" value="{{ pokemon.altura }}">
+        <input type="hidden" name="peso" value="{{ pokemon.peso }}">
+        <button type="submit">Capturar</button> | <a href="{% url 'procurar_pokemon' %}"><button type="button">Cancelar</button></a>
+    </form>
+</body>
+</html>
