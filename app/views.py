@@ -156,4 +156,9 @@ def atualizar_ataque(request,pk):
         return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque})
 
 def deletar_ataque(request,pk):
-    pass
+    ataque = Ataque.objects.get(pk=pk)
+    if request.method == 'POST':
+        ataque.delete()
+        return redirect('listar_ataques')
+    else:
+        return render(request,'deletar_ataque.html',{'ataque':ataque})
