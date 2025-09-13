@@ -40,7 +40,9 @@ def criar_pokemon(request):
             return render(request,'procurar_pokemon.html',{'form':form})   
          
 def procurar_troca(request,pk):
-    pass
+    pokemon_atual = Pokemon.objects.get(pk=pk)
+    form = PokemonForm(instance=pokemon_atual)
+    return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form})
 
 def atualizar_pokemon(request,pk):
     pass
