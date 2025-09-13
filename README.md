@@ -77,3 +77,9 @@
 
 ## Os ataques são entidades relacionas aos pokemons de uma forma One-to-Many um Pokemon pode ter vários ataques. <br> Tentei ao máximo habientar a aplicação com o tema de Pokemon para ficar mais realista, aproveite a aplicação!
 **-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-**
+
+## 🕸 Referências:
+- https://pokeapi.co/
+- https://www.youtube.com/watch?v=JVQNywo4AbU&ab_channel=BroCode
+- https://www.youtube.com/watch?v=gLfEa-3cvKw&t=995s&ab_channel=PythonDeveloper-0.1
+- https://joaolucasgpc.notion.site/Workshop-Backend-Fabrica-1a499b0a3ac580189ab8df719589852e
