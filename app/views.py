@@ -3,6 +3,8 @@ from .models import Pokemon,Ataque
 from .forms import PokemonForm
 from .pokeapi import get_pokemon,get_ataque
 
+#POKEMONS
+
 def listar_pokemons(request):
     pokemons = Pokemon.objects.all().order_by('id_pokemon')
     return render(request, 'listar_pokemons.html',{'pokemons':pokemons})
@@ -86,3 +88,23 @@ def deletar_pokemon(request,pk):
         return redirect('listar_pokemons')
     else:
         return render(request,'deletar_pokemon.html',{'pokemon':pokemon})
+    
+#ATAQUES
+
+def listar_ataques(request):
+    pass
+
+def procurar_ataque(request):
+    pass
+
+def criar_ataque(request):
+    pass
+
+def procurar_troca_ataque(request,pk):
+    pass
+
+def trocar_ataque(request,pk):
+    pass
+
+def deletar_ataque(request,pk):
+    pass
