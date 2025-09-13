@@ -132,10 +132,7 @@ def criar_ataque(request):
         else:
             return render(request,'zprocurar_ataque.html',{'form':form})
 
-def procurar_troca_ataque(request,pk):
-    pass
-
-def trocar_ataque(request,pk):
+def atualizar_ataque(request,pk):
     pass
 
 def deletar_ataque(request,pk):

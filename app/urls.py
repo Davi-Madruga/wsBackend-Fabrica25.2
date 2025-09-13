@@ -13,7 +13,6 @@ urlpatterns = [
     path('listar_ataques/',views.listar_ataques,name='listar_ataques'),
     path('procurar_ataque/',views.procurar_ataque,name='procurar_ataque'),
     path('criar_ataque/',views.criar_ataque,name='criar_ataque'),
-    path('procurar_troca_ataque/<int:pk>/',views.procurar_troca_ataque,name='procurar_troca_ataque'),
-    path('trocar_ataque/<int:pk>/',views.trocar_ataque,name='trocar_ataque'),
+    path('atualizar_ataque/<int:pk>/',views.atualizar_ataque,name='atualizar_ataque'),
     path('deletar_ataque/<int:pk>/',views.deletar_ataque,name='deletar_ataque'),
 ]
