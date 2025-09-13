@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import Pokemon,Ataque
 from .forms import PokemonForm,AtaqueForm
 from .pokeapi import get_pokemon,get_ataque
@@ -44,12 +44,12 @@ def criar_pokemon(request):
             return render(request,'procurar_pokemon.html',{'form':form,'erro':'Pokemon Não Encontrado!'})   
          
 def procurar_troca(request,pk):
-    pokemon_atual = Pokemon.objects.get(pk=pk)
+    pokemon_atual = get_object_or_404(Pokemon, pk=pk)
     form = PokemonForm(instance=pokemon_atual)
     return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,})
 
 def atualizar_pokemon(request,pk):
-    pokemon_atual = Pokemon.objects.get(pk=pk)
+    pokemon_atual = get_object_or_404(Pokemon, pk=pk)
     if request.method == 'POST':
         pokemon_atual.id_pokemon = request.POST.get('id_pokemon')
         pokemon_atual.nome = request.POST.get('nome')
@@ -84,7 +84,7 @@ def atualizar_pokemon(request,pk):
             return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,'erro':'Pokemon Não Encontrado!'})
 
 def deletar_pokemon(request,pk):
-    pokemon = Pokemon.objects.get(pk=pk)
+    pokemon = get_object_or_404(Pokemon, pk=pk)
     if request.method == 'POST':
         pokemon.delete()
         return redirect('listar_pokemons')
@@ -135,7 +135,7 @@ def criar_ataque(request):
             return render(request,'procurar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
 
 def atualizar_ataque(request,pk):
-    ataque = Ataque.objects.get(pk=pk)
+    ataque = get_object_or_404(Ataque, pk=pk)
     if request.method == 'POST':
         form = AtaqueForm(request.POST,instance=ataque)
         if form.is_valid():
@@ -160,7 +160,7 @@ def atualizar_ataque(request,pk):
         return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque})
 
 def deletar_ataque(request,pk):
-    ataque = Ataque.objects.get(pk=pk)
+    ataque = get_object_or_404(Ataque, pk=pk)
     if request.method == 'POST':
         ataque.delete()
         return redirect('listar_ataques')
