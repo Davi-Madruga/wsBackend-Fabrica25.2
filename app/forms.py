@@ -6,7 +6,7 @@ class PokemonForm(forms.ModelForm):
         model = Pokemon
         fields = ['nome']
         widgets = {
-            'nome' : forms.TextInput(),
+            'nome' : forms.TextInput(attrs={'placeholder':'# ou Nome Pokemon'}),
         }
         labels = {
             'nome' : 'Nome',

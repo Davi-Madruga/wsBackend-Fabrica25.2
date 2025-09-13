@@ -31,7 +31,7 @@ def criar_pokemon(request):
             if pokemon_info:
                 pokemon = Pokemon()
                 pokemon.id_pokemon = pokemon_info['id']
-                pokemon.nome = pokemon_info['name']
+                pokemon.nome = pokemon_info['name'].capitalize()
                 tipos = '|'
                 for t in pokemon_info['types']:
                     tipos += f"{t['type']['name']}|"
@@ -39,12 +39,14 @@ def criar_pokemon(request):
                 pokemon.altura = pokemon_info['height']
                 pokemon.peso = pokemon_info['weight']
                 return render(request,'criar_pokemon.html',{'pokemon':pokemon})
-            return render(request,'procurar_pokemon.html',{'form':form})   
+            return render(request,'procurar_pokemon.html',{'form':form,'erro':'Nome ou ID do pokemon!'})   
+        else:
+            return render(request,'procurar_pokemon.html',{'form':form,'erro':'Nome ou ID do pokemon!'})   
          
 def procurar_troca(request,pk):
     pokemon_atual = Pokemon.objects.get(pk=pk)
     form = PokemonForm(instance=pokemon_atual)
-    return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form})
+    return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,})
 
 def atualizar_pokemon(request,pk):
     pokemon_atual = Pokemon.objects.get(pk=pk)
@@ -69,7 +71,7 @@ def atualizar_pokemon(request,pk):
             if pokemon_info:
                 pokemon = Pokemon()
                 pokemon.id_pokemon = pokemon_info['id']
-                pokemon.nome = pokemon_info['name']
+                pokemon.nome = pokemon_info['name'].capitalize()
                 tipos = '|'
                 for t in pokemon_info['types']:
                     tipos += f"{t['type']['name']}|"
@@ -77,9 +79,9 @@ def atualizar_pokemon(request,pk):
                 pokemon.altura = pokemon_info['height']
                 pokemon.peso = pokemon_info['weight']
                 return render(request,'atualizar_pokemon.html',{'pokemon':pokemon,'pokemon_atual':pokemon_atual})            
-            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form})
+            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,'erro':'Nome ou ID do pokemon!'})
         else:
-            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form})
+            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,'erro':'Nome ou ID do pokemon!'})
 
 def deletar_pokemon(request,pk):
     pokemon = Pokemon.objects.get(pk=pk)
@@ -122,15 +124,15 @@ def criar_ataque(request):
                 ataque = Ataque()
                 ataque.pokemon = ataque_dono
                 ataque.id_ataque = ataque_info['id']
-                ataque.nome = ataque_info['name']
+                ataque.nome = ataque_info['name'].capitalize()
                 ataque.tipo = ataque_info['type']['name']
                 ataque.pp = ataque_info['pp']
                 ataque.power = ataque_info['power'] or '---'
                 ataque.accuracy = ataque_info['accuracy'] or '---'
                 return render(request,'criar_ataque.html',{'ataque':ataque})
-            return render(request,'procurar_ataque.html',{'form':form})
+            return render(request,'procurar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
         else:
-            return render(request,'procurar_ataque.html',{'form':form})
+            return render(request,'procurar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
 
 def atualizar_ataque(request,pk):
     ataque = Ataque.objects.get(pk=pk)
@@ -150,7 +152,9 @@ def atualizar_ataque(request,pk):
                 ataque.tipo = ataque_info['type']['name']
                 ataque.save()
                 return redirect('listar_ataques')
-        return render(request,'atualizar_ataque.html',{'form':form})
+            return render(request,'atualizar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
+        else:
+            return render(request,'atualizar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
     else:
         form = AtaqueForm(instance=ataque)
         return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque})

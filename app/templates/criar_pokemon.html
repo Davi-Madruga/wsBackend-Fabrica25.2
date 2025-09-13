@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Pokemon</title>
+    <title>Capturar Pokemon</title>
 </head>
 <body>
-    <h1>Esse pokemon?</h1>
-    <p>{{ pokemon.id_pokemon }}</p>
-    <p>{{ pokemon.nome }}</p>
-    <p>{{ pokemon.tipos }}</p>
-    <p>{{ pokemon.altura }}</p>
-    <p>{{ pokemon.peso }}</p>
+    <h1>Capturar {{ pokemon.nome }}?</h1>
+    <table border="1">
+        <tr><td>#ID</td><td>{{ pokemon.id_pokemon }}</td></tr>
+        <tr><td>Nome</td><td>{{ pokemon.nome }}</td></tr>
+        <tr><td>Tipos</td><td>{{ pokemon.tipos }}</td></tr>
+        <tr><td>Altura(hg)</td><td>{{ pokemon.altura }}</td></tr>
+        <tr><td>Peso(dm)</td><td>{{ pokemon.peso }}</td></tr>
+    </table>
+    <br>
     <form action="" method="post">
         {% csrf_token %}
         <input type="hidden" name="id_pokemon" value="{{ pokemon.id_pokemon }}">

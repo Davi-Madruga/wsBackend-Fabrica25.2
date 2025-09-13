@@ -9,7 +9,7 @@
     <h1>Transferindo...</h1>
     <form method="post">
         {% csrf_token %}
-        <p>Você tem certeza que deseja transferir: {{pokemon.nome}}</p>
+        <p>Você tem certeza que deseja transferir: {{pokemon}}</p>
         <button type="submit">Transferir</button>
     </form>
 </body>

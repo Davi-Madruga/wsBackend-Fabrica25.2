@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar ataque</title>
+    <title>Criar Ataque</title>
 </head>
 <body>
     <h1>Quer ensinar {{ ataque.nome }} para {{ ataque.pokemon }}</h1>
@@ -21,7 +21,7 @@
         <input type="hidden" name="pp" value="{{ ataque.pp }}">
         <input type="hidden" name="power" value="{{ ataque.power }}">
         <input type="hidden" name="accuracy" value="{{ ataque.accuracy }}">
-        <button type="submit">Ensinar</button> | <a href="{% url 'procurar_ataque' %}"><button type="button">Cancelar</button></a>
+        <button type="submit">ENSINAR</button> | <a href="{% url 'procurar_ataque' %}"><button type="button">CANCELAR</button></a>
     </form>
 </body>
 </html>

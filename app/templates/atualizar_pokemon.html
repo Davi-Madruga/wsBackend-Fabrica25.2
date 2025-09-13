@@ -6,20 +6,21 @@
     <title>Procurar Pokemon</title>
 </head>
 <body>
-    <h1>Match...</h1>
+    <h1>MATCH!</h1>
     <form action="{% url 'atualizar_pokemon' pk=pokemon_atual.pk %}" method="post">
     {% csrf_token %}
     <table border='1'>
         <tr>
-            <th>Pokemon Atual</th>
-            <th>Pokemon Desejado</th>
+            <th>status</th>
+            <th>Seu Pokemon</th>
+            <th>Pokemon Novo</th>
         </tr>
     
-    <tr><td>{{ pokemon_atual.id_pokemon }}</td><td>{{ pokemon.id_pokemon }}</td></tr>
-    <tr><td>{{ pokemon_atual.nome }}</td><td>{{ pokemon.nome }}</td></tr>
-    <tr><td>{{ pokemon_atual.tipos }}</td><td>{{ pokemon.tipos }}</td></tr>
-    <tr><td>{{ pokemon_atual.altura }}</td><td>{{ pokemon.altura }}</td></tr>
-    <tr><td>{{ pokemon_atual.peso }}</td><td>{{ pokemon.peso }}</td></tr>
+    <tr><th>#ID</th><td>{{ pokemon_atual.id_pokemon }}</td><td>{{ pokemon.id_pokemon }}</td></tr>
+    <tr><th>Nome</th><td>{{ pokemon_atual.nome }}</td><td>{{ pokemon.nome }}</td></tr>
+    <tr><th>Tipos</th><td>{{ pokemon_atual.tipos }}</td><td>{{ pokemon.tipos }}</td></tr>
+    <tr><th>Altura(hg)</th><td>{{ pokemon_atual.altura }}</td><td>{{ pokemon.altura }}</td></tr>
+    <tr><th>Peso(dm)</th><td>{{ pokemon_atual.peso }}</td><td>{{ pokemon.peso }}</td></tr>
     </table>
     <br>
     <p>Você tem certeza que quer trocar?</p>
@@ -28,7 +29,7 @@
     <input type="hidden" name="tipos" value="{{ pokemon.tipos }}">
     <input type="hidden" name="altura" value="{{ pokemon.altura }}">
     <input type="hidden" name="peso" value="{{ pokemon.peso }}">
-    <button type="submit">TROCAR</button> | <a href="{% url 'listar_pokemons' %}"><button type="button">NÃOO</button></a>
+    <button type="submit">TROCAR</button> | <a href="{% url 'listar_pokemons' %}"><button type="button">CANCELAR</button></a>
     </form>
 </body>
 </html>

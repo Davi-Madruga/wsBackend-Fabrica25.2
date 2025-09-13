@@ -6,14 +6,16 @@
     <title>Procurar Ataque</title>
 </head>
 <body>
-    <h1>Aprendendo Ataque...</h1>
+    <h1>Procuar Ataque</h1>
     <form action="{% url 'criar_ataque' %}" method="get">
     {% csrf_token %}
     {{ form.pokemon.label_tag}}
-    {{ form.pokemon }}
-    <p>Digite o nome ou o ID do ataque </p>
+    {{ form.pokemon }} <br><br>
     {{ form.nome }} <br><br>
-    <button type="submit">Procurar</button>
+    {% if erro %}
+    <p>{{ erro }}</p>
+    {% endif %}
+    <button type="submit">PROCURAR</button> | <a href="{% url 'listar_ataques' %}"><button type='button'>CANCELAR</button></a>
     </form>
 </body>
 </html>
