@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Ataque</title>
+</head>
+<body>
+    <h1>Ataque</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.nome.label_tag }} <br>
+        {{ form.nome }} <br>
+        <input type="hidden" name="pokemon" value="{{ ataque.pokemon.pk }}">
+        <button type="submit">Enviar</button> | <a href="{% url 'listar_ataques' %}"><button type="button">Cancelar</button></a>
+    </form>
+</body>
+</html>
