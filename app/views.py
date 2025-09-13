@@ -95,12 +95,51 @@ def listar_ataques(request):
     ataques = Ataque.objects.all()
     return render(request,'zlistar_ataques.html',{'ataques':ataques})
 
-def procurar_ataque(request):
+def procurar_ataque(request,pk):
     form = AtaqueForm()
     return render(request,'zprocurar_ataque.html',{'form':form})
 
 def criar_ataque(request):
-    pass
+    if request.method == 'POST':
+        ataque = Ataque()
+        ataque.pokemon = request.POST.get('pokemon')
+        ataque.id_ataque = request.POST.get('id_ataque')
+        ataque.nome = request.POST.get('nome')
+        ataque.tipo = request.POST.get('tipo')
+        ataque.pp = request.POST.get('pp')
+        ataque.power = request.POST.get('power')
+        ataque.accuracy = request.POST.get('accuracy')
+        ataque.save()
+        return redirect('zlistar_ataques')
+    else:
+        form = AtaqueForm(request.GET)
+        if form.is_valid():
+            ataque_name = form.cleaned_data['nome']
+            ataque_info = get_ataque(ataque_name)
+            if ataque_info:
+                ataque = Ataque()
+                ataque.pokemon = form.cleaned_data['pokemon']
+                ataque.id_ataque = ataque_info['id']
+                ataque.nome = ataque_info['name']
+                ataque.tipo = ataque_info['type']['name']
+                if ataque_info['pp'] == None:
+                    ataque.pp = '---'
+                else:
+                    ataque.pp = ataque_info['pp']
+
+                if ataque_info['power'] == None:
+                    ataque.power = '---'
+                else:
+                    ataque.power = ataque_info['power']
+
+                if ataque_info['accuracy'] == None:
+                    ataque.accuracy = '---'
+                else:
+                    ataque.accuracy = ataque_info['accuracy']
+                return render(request,'zcriar_ataque.html',{'ataque':ataque})
+            return render(request,'zprocurar_ataque.html',{'form':form})
+        else:
+            return render(request,'zprocurar_ataque.html',{'form':form})
 
 def procurar_troca_ataque(request,pk):
     pass
