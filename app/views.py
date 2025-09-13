@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Pokemon,Ataque
-from .forms import PokemonForm
+from .forms import PokemonForm,AtaqueForm
 from .pokeapi import get_pokemon,get_ataque
 
 #POKEMONS
@@ -96,7 +96,8 @@ def listar_ataques(request):
     return render(request,'zlistar_ataques.html',{'ataques':ataques})
 
 def procurar_ataque(request):
-    pass
+    form = AtaqueForm()
+    return render(request,'zprocurar_ataque.html',{'form':form})
 
 def criar_ataque(request):
     pass
