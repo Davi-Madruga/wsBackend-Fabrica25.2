@@ -13,14 +13,18 @@ class PokemonForm(forms.ModelForm):
         }
 
 class AtaqueForm(forms.ModelForm):
+    pokemon = forms.ModelChoiceField(
+        queryset=Pokemon.objects.all(),           
+        widget=forms.Select(attrs={'placeholder':'Selecione um Pokémon'}),  
+        label="Pokémon",
+    )
     class Meta:
         model = Ataque
         fields = ['pokemon','nome']
         widgets = {
-            'pokemon' : forms.Select(),
-            'nome' : forms.TextInput(),
+
+            'nome' : forms.TextInput(attrs={'placeholder':'ID ou Nome Ataque'}),
         }
         labels = {
-            'pokemon' : 'Pokemon',
             'nome' : 'Nome',
         }

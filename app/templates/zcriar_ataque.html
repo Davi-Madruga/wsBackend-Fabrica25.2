@@ -14,7 +14,7 @@
     <p>{{ ataque.accuracy }}</p>
     <form action="" method="post">
         {% csrf_token %}
-        <input type="hidden" name="pokemon" value="{{ ataque.pokemon }}">
+        <input type="hidden" name="pokemon" value="{{ ataque.pokemon.pk }}">
         <input type="hidden" name="id_ataque" value="{{ ataque.id_ataque }}">
         <input type="hidden" name="nome" value="{{ ataque.nome }}">
         <input type="hidden" name="tipo" value="{{ ataque.tipo }}">

@@ -92,17 +92,18 @@ def deletar_pokemon(request,pk):
 #ATAQUES
 
 def listar_ataques(request):
-    ataques = Ataque.objects.all()
+    ataques = Ataque.objects.all().order_by('pokemon')
     return render(request,'zlistar_ataques.html',{'ataques':ataques})
 
-def procurar_ataque(request,pk):
+def procurar_ataque(request):
     form = AtaqueForm()
     return render(request,'zprocurar_ataque.html',{'form':form})
 
 def criar_ataque(request):
     if request.method == 'POST':
         ataque = Ataque()
-        ataque.pokemon = request.POST.get('pokemon')
+        pokemon_id = request.POST.get('pokemon')
+        ataque.pokemon = Pokemon.objects.get(pk=pokemon_id)
         ataque.id_ataque = request.POST.get('id_ataque')
         ataque.nome = request.POST.get('nome')
         ataque.tipo = request.POST.get('tipo')
@@ -110,32 +111,22 @@ def criar_ataque(request):
         ataque.power = request.POST.get('power')
         ataque.accuracy = request.POST.get('accuracy')
         ataque.save()
-        return redirect('zlistar_ataques')
+        return redirect('listar_ataques')
     else:
         form = AtaqueForm(request.GET)
         if form.is_valid():
             ataque_name = form.cleaned_data['nome']
+            ataque_dono = form.cleaned_data['pokemon']
             ataque_info = get_ataque(ataque_name)
             if ataque_info:
                 ataque = Ataque()
-                ataque.pokemon = form.cleaned_data['pokemon']
+                ataque.pokemon = ataque_dono
                 ataque.id_ataque = ataque_info['id']
                 ataque.nome = ataque_info['name']
                 ataque.tipo = ataque_info['type']['name']
-                if ataque_info['pp'] == None:
-                    ataque.pp = '---'
-                else:
-                    ataque.pp = ataque_info['pp']
-
-                if ataque_info['power'] == None:
-                    ataque.power = '---'
-                else:
-                    ataque.power = ataque_info['power']
-
-                if ataque_info['accuracy'] == None:
-                    ataque.accuracy = '---'
-                else:
-                    ataque.accuracy = ataque_info['accuracy']
+                ataque.pp = ataque_info['pp']
+                ataque.power = ataque_info['power'] or '---'
+                ataque.accuracy = ataque_info['accuracy'] or '---'
                 return render(request,'zcriar_ataque.html',{'ataque':ataque})
             return render(request,'zprocurar_ataque.html',{'form':form})
         else:

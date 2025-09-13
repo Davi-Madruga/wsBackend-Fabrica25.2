@@ -28,7 +28,7 @@
             <td>{{ ataque.pp }}</td>
             <td>{{ ataque.power }}</td>
             <td>{{ ataque.accuracy }}</td>
-            <td><a href="{% url 'atualizar_ataque' pk=ataque.pk %}"><button>Trocar</button></a></td>
+            <td><a href="{% url 'procurar_troca_ataque' pk=ataque.pk %}"><button>Trocar</button></a></td>
             <td><a href="{% url 'deletar_ataque' pk=ataque.pk %}"><button>Desaprender</button></a></td>
         </tr>
         {% endfor %}
