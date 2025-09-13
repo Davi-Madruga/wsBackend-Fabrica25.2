@@ -4,25 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capturar Pokemon</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1>Capturar {{ pokemon.nome }}?</h1>
-    <table border="1">
-        <tr><td>#ID</td><td>{{ pokemon.id_pokemon }}</td></tr>
-        <tr><td>Nome</td><td>{{ pokemon.nome }}</td></tr>
-        <tr><td>Tipos</td><td>{{ pokemon.tipos }}</td></tr>
-        <tr><td>Altura(hg)</td><td>{{ pokemon.altura }}</td></tr>
-        <tr><td>Peso(dm)</td><td>{{ pokemon.peso }}</td></tr>
-    </table>
-    <br>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="id_pokemon" value="{{ pokemon.id_pokemon }}">
-        <input type="hidden" name="nome" value="{{ pokemon.nome }}">
-        <input type="hidden" name="tipos" value="{{ pokemon.tipos }}">
-        <input type="hidden" name="altura" value="{{ pokemon.altura }}">
-        <input type="hidden" name="peso" value="{{ pokemon.peso }}">
-        <button type="submit">Capturar</button> | <a href="{% url 'procurar_pokemon' %}"><button type="button">Cancelar</button></a>
-    </form>
+    <h1 class='titulopagina'>Capturar {{ pokemon.nome }}?</h1>
+    <div class='meio'>
+        <table class="tabela">
+            <tr>
+                <th>#ID</th>
+                <th>Nome</th>
+                <th>Tipos</th>
+                <th>Altura(hg)</th>
+                <th>Peso(dm)</th>
+            </tr>
+            <tr>
+                <td>{{ pokemon.id_pokemon }}</td>
+                <td>{{ pokemon.nome }}</td>
+                <td>{{ pokemon.tipos }}</td>
+                <td>{{ pokemon.altura }}</td>
+                <td>{{ pokemon.peso }}</td>
+            </tr>
+        </table>
+        <br>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id_pokemon" value="{{ pokemon.id_pokemon }}">
+            <input type="hidden" name="nome" value="{{ pokemon.nome }}">
+            <input type="hidden" name="tipos" value="{{ pokemon.tipos }}">
+            <input type="hidden" name="altura" value="{{ pokemon.altura }}">
+            <input type="hidden" name="peso" value="{{ pokemon.peso }}">
+            <button type="submit" class='verde'>Capturar</button> | <a href="{% url 'procurar_pokemon' %}"><button type="button" class='cancelar'>Cancelar</button></a>
+        </form>
+    </div>
 </body>
 </html>

@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Procurar Pokemon</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1>Procurando Pokemon...</h1>
-    <form action="{% url 'criar_pokemon' %}" method="get">
-    {% csrf_token %}
-    {{ form.nome }} <br><br>
-    {% if erro %}
-    <p>{{ erro }}</p>
-    {% endif %}
-    <button type="submit">Procurar</button>
-    </form>
+    <h1 class='titulopagina'>Procurando Pokemon</h1>
+    <div class='meio'>
+        <div class='mensagem'>
+            <form action="{% url 'criar_pokemon' %}" method="get">
+            {% csrf_token %}
+            {{ form.nome }} <br><br>
+            {% if erro %}
+            <p>{{ erro }}</p>
+            {% endif %}
+            <button type="submit" class='atualizar'>Procurar</button> | <a href="{% url 'listar_pokemons' %}"><button type='button' class='cancelar'>Cancelar</button></a>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transferir Pokemon</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1>Transferindo...</h1>
-    <form method="post">
-        {% csrf_token %}
-        <p>Você tem certeza que deseja transferir: {{pokemon}}</p>
-        <button type="submit">Transferir</button>
-    </form>
+    <h1 class='titulopagina'>Transferindo</h1>
+    <div class='meio'>
+        <div class='mensagem'>
+            <form method="post">
+                {% csrf_token %}
+                <p>Você tem certeza que deseja transferir: {{pokemon}}</p>
+                <button type="submit" class='deletar'>Transferir</button> | <a href="{% url 'listar_pokemons' %}"><button type='button' class='cancelar'>Cancelar</button></a>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

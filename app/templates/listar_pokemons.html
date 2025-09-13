@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemons</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1>Pokemons</h1><a href="{% url 'listar_ataques' %}"><button>Ataques</button></a>
+    <h1 class="titulopagina">POKÉDEX</h1><a href="{% url 'listar_ataques' %}"><button class="trocar">Ataques</button></a>
     {% if pokemons %}
-    <table border='1'>
-        <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Tipos</th>
-            <th>Altura(hg)</th>
-            <th>Peso(dm)</th>
-            <th colspan='2'>Ações</th>
-        </tr>
+    <table class="tabela">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>NOME</th>
+                <th>TIPOS</th>
+                <th>ALTURA(hg)</th>
+                <th>PESO(dm)</th>
+                <th colspan='2'>AÇÕES</th>
+            </tr>
+        </thead>
         {% for pokemon in pokemons %}
         <tr>
             <td>{{ pokemon.id_pokemon }}</td>
@@ -24,8 +28,8 @@
             <td>{{ pokemon.tipos }}</td>
             <td>{{ pokemon.altura }}</td>
             <td>{{ pokemon.peso }}</td>
-            <td><a href="{% url 'procurar_troca' pk=pokemon.pk %}"><button>Trocar</button></a></td>
-            <td><a href="{% url 'deletar_pokemon' pk=pokemon.pk %}"><button>Transferir</button></a></td>
+            <td><a href="{% url 'procurar_troca' pk=pokemon.pk %}"><button class="atualizar">Trocar</button></a></td>
+            <td><a href="{% url 'deletar_pokemon' pk=pokemon.pk %}"><button class="deletar">Transferir</button></a></td>
         </tr>
         {% endfor %}
     </table>
@@ -33,7 +37,7 @@
     <p>Nenhum Pokemon</p>
     {% endif %}
     <br>
-    <a href="{% url 'procurar_pokemon' %}"><button>Procurar</button></a>
+    <button class="cadastrar"><a href="{% url 'procurar_pokemon' %}">Procurar</a></button>
     
 </body>
 </html>

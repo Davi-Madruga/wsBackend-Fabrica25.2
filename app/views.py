@@ -39,9 +39,9 @@ def criar_pokemon(request):
                 pokemon.altura = pokemon_info['height']
                 pokemon.peso = pokemon_info['weight']
                 return render(request,'criar_pokemon.html',{'pokemon':pokemon})
-            return render(request,'procurar_pokemon.html',{'form':form,'erro':'Nome ou ID do pokemon!'})   
+            return render(request,'procurar_pokemon.html',{'form':form,'erro':'Pokemon Não Encontrado!'})   
         else:
-            return render(request,'procurar_pokemon.html',{'form':form,'erro':'Nome ou ID do pokemon!'})   
+            return render(request,'procurar_pokemon.html',{'form':form,'erro':'Pokemon Não Encontrado!'})   
          
 def procurar_troca(request,pk):
     pokemon_atual = Pokemon.objects.get(pk=pk)
@@ -79,9 +79,9 @@ def atualizar_pokemon(request,pk):
                 pokemon.altura = pokemon_info['height']
                 pokemon.peso = pokemon_info['weight']
                 return render(request,'atualizar_pokemon.html',{'pokemon':pokemon,'pokemon_atual':pokemon_atual})            
-            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,'erro':'Nome ou ID do pokemon!'})
+            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,'erro':'Pokemon Não Encontrado!'})
         else:
-            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,'erro':'Nome ou ID do pokemon!'})
+            return render(request,'procurar_troca.html',{'pokemon_atual':pokemon_atual,'form':form,'erro':'Pokemon Não Encontrado!'})
 
 def deletar_pokemon(request,pk):
     pokemon = Pokemon.objects.get(pk=pk)

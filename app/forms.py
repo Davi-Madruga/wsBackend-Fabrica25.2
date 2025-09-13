@@ -6,7 +6,7 @@ class PokemonForm(forms.ModelForm):
         model = Pokemon
         fields = ['nome']
         widgets = {
-            'nome' : forms.TextInput(attrs={'placeholder':'# ou Nome Pokemon'}),
+            'nome' : forms.TextInput(attrs={'placeholder':'Nome ou número'}),
         }
         labels = {
             'nome' : 'Nome',
@@ -23,7 +23,7 @@ class AtaqueForm(forms.ModelForm):
         fields = ['pokemon','nome']
         widgets = {
 
-            'nome' : forms.TextInput(attrs={'placeholder':'ID ou Nome Ataque'}),
+            'nome' : forms.TextInput(attrs={'placeholder':'Nome ou número'}),
         }
         labels = {
             'nome' : 'Nome',
