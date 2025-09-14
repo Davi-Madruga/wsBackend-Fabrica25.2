@@ -26,7 +26,7 @@
             <tr>
                 <td><a href="{% url 'detalhar_ataque' pk=ataque.pk %}"><button class='detalhar'>{{ ataque.id_ataque }}</button></a></td>
                 <td>{{ ataque.nome }}</td>
-                <td>{{ ataque.pokemon }}</td>
+                <td><a href="{% url 'detalhar_pokemon' pk=ataque.pokemon.pk %}">{{ ataque.pokemon }}</a></td>
                 <td>{{ ataque.tipo }}</td>
                 <td>{{ ataque.pp }}</td>
                 <td>{{ ataque.power }}</td>
