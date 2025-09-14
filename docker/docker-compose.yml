@@ -1,9 +1,9 @@
 services:
- projeto_django:
-  build:
-   context: ..
-   dockerfile: docker/dockerfile
-  ports:
-   - "8000:8000"
-  volumes:
-   - ../:/app
+  web:
+   build:
+    context: ../
+    dockerfile: docker/dockerfile
+   ports:
+    - "8000:8000"
+   volumes:
+    - ../:/app
