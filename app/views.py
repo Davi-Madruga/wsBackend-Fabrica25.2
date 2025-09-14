@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Pokemon,Ataque
-from .forms import PokemonForm,AtaqueForm
 from .pokeapi import get_pokemon,get_ataque
+from .forms import PokemonForm,AtaqueForm
+from .models import Pokemon,Ataque
 
 #POKEMONS
 

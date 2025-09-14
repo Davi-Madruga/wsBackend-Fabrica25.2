@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ataques</title>
+    <title>ATAQUES</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
     <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
@@ -23,7 +23,6 @@
             <th colspan="2">AÇÕES</th>
         </tr>
         {% for ataque in ataques %}
-        
             <tr>
                 <td><a href="{% url 'detalhar_ataque' pk=ataque.pk %}"><button class='detalhar'>{{ ataque.id_ataque }}</button></a></td>
                 <td>{{ ataque.nome }}</td>
@@ -35,14 +34,13 @@
                 <td><a href="{% url 'atualizar_ataque' pk=ataque.pk %}"><button class='atualizar'>Trocar</button></a></td>
                 <td><a href="{% url 'deletar_ataque' pk=ataque.pk %}"><button class='deletar'>Esquecer</button></a></td>
             </tr>
-        
         {% endfor %}
     </table>
     {% else %}
     <div class='meio'>
-        <div class='mensagem'>
-            <p>Seus Pokemons não sabem nenhum Ataque</p>
-        </div>
+    <div class='mensagem'>
+        <p>Seus Pokemons não sabem nenhum Ataque</p>
+    </div>
     </div>
     {% endif %}
     <a href="{% url 'procurar_ataque' %}"><button class='cadastrar'>Aprender</button></a>

@@ -11,16 +11,16 @@
 <body>
     <h1 class='titulopagina'>Procurando Pokemon</h1>
     <div class='meio'>
-        <div class='mensagem'>
-            <form action="{% url 'criar_pokemon' %}" method="get">
-            {% csrf_token %}
-            {{ form.nome }} <br><br>
-            {% if erro %}
-            <p>{{ erro }}</p>
-            {% endif %}
-            <button type="submit" class='atualizar'>Procurar</button> | <a href="{% url 'listar_pokemons' %}"><button type='button' class='cancelar'>Cancelar</button></a>
-            </form>
-        </div>
+    <div class='mensagem'>
+        <form action="{% url 'criar_pokemon' %}" method="get">
+        {% csrf_token %}
+        {{ form.nome }} <br><br>
+        {% if erro %}
+        <p>{{ erro }}</p>
+        {% endif %}
+        <button type="submit" class='atualizar'>Procurar</button> | <a href="{% url 'listar_pokemons' %}"><button type='button' class='cancelar'>Cancelar</button></a>
+        </form>
+    </div>
     </div>
 </body>
 </html>

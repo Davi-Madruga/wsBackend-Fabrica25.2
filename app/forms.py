@@ -15,7 +15,7 @@ class PokemonForm(forms.ModelForm):
 class AtaqueForm(forms.ModelForm):
     pokemon = forms.ModelChoiceField(
         queryset=Pokemon.objects.all(),           
-        widget=forms.Select(attrs={'placeholder':'Selecione um Pokémon'}),  
+        widget=forms.Select(),  
         label="Pokémon",
     )
     class Meta:

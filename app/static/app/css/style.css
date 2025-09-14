@@ -7,47 +7,51 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input,select {
+    height: 25px;
+    width: 140px;
+    background-color: rgb(236, 234, 234);
+}
+
 .titulopagina {
     margin: 50px 0px 40px 0px;
+}
+
+.meio {
+    margin-top: 100px;
+    text-align: center;
+}
+
+button {
+    padding: 6px;
+    border-radius: 5px;
+    width: 80px;
+    font-size: 80%;
+    background-color: rgb(194, 189, 189);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    border: 3px solid black;
+}
+
+.cadastrar {
+    background-color: rgb(97, 226, 97);
+    position: absolute;
+    top: 55px;
+    right: 450px;
 }
 
 .trocar {
     position: absolute;
     top: 55px;
     left: 450px;
-}
-
-.detalhar{
-    width: 50px;
-    background-color: orange;
-}
-
-.tabela {
-    border: 3px solid rgb(58, 58, 58);
-    padding: 5px;
-    background-color: rgb(255, 181, 120);
-    box-shadow: 2px 2px 10px 5px rgb(206, 206, 206);
-    min-width: 260px;
-}
-.tabelagrande {
-    border: 3px solid rgb(58, 58, 58);
-    padding: 5px;
-    background-color: rgb(255, 181, 120);
-    box-shadow: 2px 2px 10px 5px rgb(206, 206, 206);
-    width: 800px;
-}
-thead{
-    background-color: rgb(224, 99, 40);
-}
-th, td {
-    border: 2px solid rgb(59, 59, 59);
-    padding: 5px;
-    text-align: center;
-    background-color: rgb(255, 241, 164);
-}
-
-tr {
-    border-bottom: 5px solid white;
 }
 
 .atualizar {
@@ -58,48 +62,46 @@ tr {
     background-color: rgb(233, 55, 55);
 }
 
-.cancelar{
-    background-color: rgb(255, 111, 219)
+.cancelar {
+    background-color: rgb(255, 111, 219);
 }
 
-
-.cadastrar {
-    background-color: rgb(97, 226, 97);
-    position: absolute;
-    top: 55px;
-    right: 450px;
-}
-.verde{
+.verde {
     background-color: rgb(81, 255, 81);
 }
-button {
-    padding: 6px;
-    border-radius: 5px;
-    width: 80px;
-    font-size: 80%;
-    background-color: rgb(194, 189, 189);
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-button:hover{
-    border: 3px solid black;
 
+.detalhar {
+    width: 50px;
+    background-color: orange;
 }
-.meio{
-    margin-top: 100px;
+
+.tabela,.tabelagrande {
+    border: 3px solid rgb(58, 58, 58);
+    padding: 5px;
+    background-color: rgb(255, 181, 120);
+    box-shadow: 2px 2px 10px 5px rgb(206, 206, 206);
+}
+
+.tabela {
+    min-width: 260px;
+}
+
+.tabelagrande {
+    width: 800px;
+}
+
+th,td {
+    border: 2px solid rgb(59, 59, 59);
+    padding: 5px;
     text-align: center;
-}
-a{
-    text-decoration: none;
-    color: inherit;
+    background-color: rgb(255, 241, 164);
 }
 
-input,select{
-    height: 25px;
-    width: 140px;
-    background-color: rgb(236, 234, 234);
+tr {
+    border-bottom: 5px solid white;
 }
-.mensagem{
+
+.mensagem {
     background-color: rgb(211, 211, 211);
     border: 3px solid black;
     padding: 35px;
