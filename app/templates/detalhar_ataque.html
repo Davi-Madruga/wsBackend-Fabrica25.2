@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ataques</title>
+    <title>Ataque</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
-    <h1 class='titulopagina'>ATAQUES</h1><a href="{% url 'listar_pokemons' %}"><button class='trocar'>Pokemons</button></a>
-    {% if ataques %}
-    <table class='tabelagrande'>
+     <h1>{{ ataque.nome }} - {{ ataque.pokemon }}</h1>
+    <div class='meio'>
+ <table class='tabelagrande'>
         <tr>
             <th>#</th>
             <th>Usuario</th>
@@ -21,8 +21,6 @@
             <th>ACCURACY</th>
             <th colspan="2">AÇÕES</th>
         </tr>
-        {% for ataque in ataques %}
-        
             <tr>
                 <td><a href="{% url 'detalhar_ataque' pk=ataque.pk %}"><button class='detalhar'>{{ ataque.id_ataque }}</button></a></td>
                 <td>{{ ataque.pokemon }}</td>
@@ -34,12 +32,8 @@
                 <td><a href="{% url 'atualizar_ataque' pk=ataque.pk %}"><button class='atualizar'>Trocar</button></a></td>
                 <td><a href="{% url 'deletar_ataque' pk=ataque.pk %}"><button class='deletar'>Esquecer</button></a></td>
             </tr>
-        
-        {% endfor %}
     </table>
-    {% else %}
-    <p>Seus Pokemons não sabem nenhum Ataque</p>
-    {% endif %}
-    <a href="{% url 'procurar_ataque' %}"><button class='cadastrar'>Aprender</button></a>
+        <a href="{% url 'listar_ataques'%}"><button>Voltar</button></a>
+    </div>
 </body>
 </html>

@@ -170,3 +170,7 @@ def deletar_ataque(request,pk):
         return redirect('listar_ataques')
     else:
         return render(request,'deletar_ataque.html',{'ataque':ataque})
+    
+def detalhar_ataque(request,pk):
+    ataque = get_object_or_404(Ataque, pk=pk)
+    return render(request,'detalhar_ataque.html',{'ataque':ataque})

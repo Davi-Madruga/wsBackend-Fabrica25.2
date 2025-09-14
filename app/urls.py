@@ -16,4 +16,5 @@ urlpatterns = [
     path('criar_ataque/',views.criar_ataque,name='criar_ataque'),
     path('atualizar_ataque/<int:pk>/',views.atualizar_ataque,name='atualizar_ataque'),
     path('deletar_ataque/<int:pk>/',views.deletar_ataque,name='deletar_ataque'),
+    path('detalhar_ataque/<int:pk>/',views.detalhar_ataque,name='detalhar_ataque'),
 ]

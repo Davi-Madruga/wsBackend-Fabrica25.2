@@ -17,6 +17,11 @@ body {
     left: 450px;
 }
 
+.detalhar{
+    width: 50px;
+    background-color: orange;
+}
+
 .tabela {
     border: 3px solid rgb(58, 58, 58);
     padding: 5px;
