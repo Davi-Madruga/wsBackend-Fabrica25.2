@@ -98,7 +98,7 @@ def detalhar_pokemon(request,pk):
 #ATAQUES
 
 def listar_ataques(request):
-    ataques = Ataque.objects.all().order_by('pokemon')
+    ataques = Ataque.objects.all().order_by('id_ataque')
     return render(request,'listar_ataques.html',{'ataques':ataques})
 
 def procurar_ataque(request):
@@ -156,9 +156,9 @@ def atualizar_ataque(request,pk):
                 ataque.tipo = ataque_info['type']['name']
                 ataque.save()
                 return redirect('listar_ataques')
-            return render(request,'atualizar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
+            return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque,'erro':'Nome ou ID do Ataque!'})
         else:
-            return render(request,'atualizar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
+            return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque,'erro':'Nome ou ID do Ataque!'})
     else:
         form = AtaqueForm(instance=ataque)
         return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque})

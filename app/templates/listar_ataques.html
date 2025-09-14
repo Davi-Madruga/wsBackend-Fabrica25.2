@@ -13,8 +13,8 @@
     <table class='tabelagrande'>
         <tr>
             <th>#</th>
-            <th>Usuario</th>
             <th>NOME</th>
+            <th>Usuario</th>
             <th>TIPO</th>
             <th>PP</th>
             <th>POWER</th>
@@ -25,8 +25,8 @@
         
             <tr>
                 <td><a href="{% url 'detalhar_ataque' pk=ataque.pk %}"><button class='detalhar'>{{ ataque.id_ataque }}</button></a></td>
-                <td>{{ ataque.pokemon }}</td>
                 <td>{{ ataque.nome }}</td>
+                <td>{{ ataque.pokemon }}</td>
                 <td>{{ ataque.tipo }}</td>
                 <td>{{ ataque.pp }}</td>
                 <td>{{ ataque.power }}</td>

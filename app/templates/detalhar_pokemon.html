@@ -10,24 +10,26 @@
 <body>
   <h1 class='titulopagina'>{{ pokemon.nome }}</h1>
     <div class='meio'>
-        <table class="tabela">
-            <tr>
-                <th>#ID</th>
-                <th>Nome</th>
-                <th>Tipos</th>
-                <th>Altura(hg)</th>
-                <th>Peso(dm)</th>
-            </tr>
-            <tr>
-                <td>{{ pokemon.id_pokemon }}</td>
-                <td>{{ pokemon.nome }}</td>
-                <td>{{ pokemon.tipos }}</td>
-                <td>{{ pokemon.altura }}</td>
-                <td>{{ pokemon.peso }}</td>
-            </tr>
-        </table>
-        <a href="{% url 'procurar_troca' pk=pokemon.pk %}"><button class="atualizar">Trocar</button></a>
-        <a href="{% url 'deletar_pokemon' pk=pokemon.pk %}"><button class="deletar">Transferir</button></a>
-        </div>
+    <table class="tabelagrande">
+        <tr>
+            <th>#</th>
+            <th>NOME</th>
+            <th>TIPOS</th>
+            <th>ALTURA(hg)</th>
+            <th>PESO(dm)</th>
+            <th colspan='2'>AÇÕES</th>
+        </tr>
+        <tr>
+            <td><a href="{% url 'detalhar_pokemon' pk=pokemon.pk %}"><button class='detalhar'>{{ pokemon.id_pokemon }}</button></a></td>
+            <td>{{ pokemon.nome }}</td>
+            <td>{{ pokemon.tipos }}</td>
+            <td>{{ pokemon.altura }}</td>
+            <td>{{ pokemon.peso }}</td>
+            <td><a href="{% url 'procurar_troca' pk=pokemon.pk %}"><button class="atualizar">Trocar</button></a></td>
+            <td><a href="{% url 'deletar_pokemon' pk=pokemon.pk %}"><button class="deletar">Transferir</button></a></td>
+        </tr>
+    </table>
+        <a href="{% url 'listar_pokemons' %}"><button class="verde">Voltar</button></a>       
+    </div>
 </body>
 </html>
