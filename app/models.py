@@ -21,4 +21,4 @@ class Ataque(models.Model):
     accuracy = models.CharField()
 
     def __str__(self):
-        return self.nome
+        return f"#{self.id_ataque}|{self.nome}"

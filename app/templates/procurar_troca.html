@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trocar Pokemon</title>
+    <title>Trocar {{ pokemon_atual }}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
     <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
-    <h1 class='titulopagina'>Trocar Pokemon</h1>
+    <h1 class='titulopagina'>Trocar {{ pokemon_atual }}</h1>
     <div class='meio'>
         <div class='mensagem'>
-            <p>Seu Pokemon: {{ pokemon_atual.nome }} </p>
+            <p>Seu Pokemon: {{ pokemon_atual }} </p>
             <form action="{% url 'atualizar_pokemon' pk=pokemon_atual.pk %}" method="get">
             {% csrf_token %}
             <input type="hidden" name="id_pokemon" value="{{ pokemon_atual.id_pokemon }}">
