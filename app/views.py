@@ -91,6 +91,10 @@ def deletar_pokemon(request,pk):
     else:
         return render(request,'deletar_pokemon.html',{'pokemon':pokemon})
     
+def detalhar_pokemon(request,pk):
+    pokemon = get_object_or_404(Pokemon, pk=pk)
+    return render(request,'detalhar_pokemon.html',{'pokemon':pokemon})
+    
 #ATAQUES
 
 def listar_ataques(request):

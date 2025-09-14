@@ -25,7 +25,7 @@
         {% for pokemon in pokemons %}
         <tr>
             <td>{{ pokemon.id_pokemon }}</td>
-            <td>{{ pokemon.nome }}</td>
+            <td><a href="{% url 'detalhar_pokemon' pk=pokemon.pk %}">{{ pokemon.nome }}</a></td>
             <td>{{ pokemon.tipos }}</td>
             <td>{{ pokemon.altura }}</td>
             <td>{{ pokemon.peso }}</td>

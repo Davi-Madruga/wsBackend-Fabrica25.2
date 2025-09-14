@@ -9,6 +9,7 @@ urlpatterns = [
     path('procurar_troca/<int:pk>/',views.procurar_troca,name='procurar_troca'),
     path('atualizar_pokemon/<int:pk>/',views.atualizar_pokemon,name='atualizar_pokemon'),
     path('deletar_pokemon/<int:pk>/',views.deletar_pokemon,name='deletar_pokemon'),
+    path('detalhar_pokemon/<int:pk>/',views.detalhar_pokemon,name='detalhar_pokemon'),
     #ATAQUES    
     path('listar_ataques/',views.listar_ataques,name='listar_ataques'),
     path('procurar_ataque/',views.procurar_ataque,name='procurar_ataque'),
