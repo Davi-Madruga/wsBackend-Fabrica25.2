@@ -13,8 +13,11 @@
         <div class='mensagem'>
         <form method="post">
             {% csrf_token %}
-            <p>Quer que {{ ataque.pokemon }} esqueça {{ ataque.nome }} e aprenda:</p>
+            <p>Quer que {{ ataque.pokemon }} esqueça {{ ataque_atual }} e aprenda:</p>
             {{ form.nome }} <br>
+            {% if erro %}
+            <p>{{erro}}<p>
+            {% endif %}
             <input type="hidden" name="pokemon" value="{{ ataque.pokemon.pk }}">
             <button type="submit" class='verde'>Enviar</button> | <a href="{% url 'listar_ataques' %}"><button type="button" class='cancelar'>Cancelar</button></a>
         </form>

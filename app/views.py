@@ -134,12 +134,13 @@ def criar_ataque(request):
                 ataque.power = ataque_info['power'] or '---'
                 ataque.accuracy = ataque_info['accuracy'] or '---'
                 return render(request,'criar_ataque.html',{'ataque':ataque})
-            return render(request,'procurar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
+            return render(request,'procurar_ataque.html',{'form':form,'erro':'Ataque Não Encontrado!'})
         else:
-            return render(request,'procurar_ataque.html',{'form':form,'erro':'Nome ou ID do Ataque!'})
+            return render(request,'procurar_ataque.html',{'form':form,'erro':'Ataque Não Encontrado!'})
 
 def atualizar_ataque(request,pk):
     ataque = get_object_or_404(Ataque, pk=pk)
+    ataque_atual = ataque.nome    
     if request.method == 'POST':
         form = AtaqueForm(request.POST,instance=ataque)
         if form.is_valid():
@@ -156,12 +157,12 @@ def atualizar_ataque(request,pk):
                 ataque.tipo = ataque_info['type']['name']
                 ataque.save()
                 return redirect('listar_ataques')
-            return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque,'erro':'Nome ou ID do Ataque!'})
+            return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque,'ataque_atual':ataque_atual,'erro':'Ataque Não Encontrado!'})
         else:
-            return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque,'erro':'Nome ou ID do Ataque!'})
+            return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque,'ataque_atual':ataque_atual,'erro':'Ataque Não Encontrado!'})
     else:
         form = AtaqueForm(instance=ataque)
-        return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque})
+        return render(request,'atualizar_ataque.html',{'form':form,'ataque':ataque,'ataque_atual':ataque_atual})
 
 def deletar_ataque(request,pk):
     ataque = get_object_or_404(Ataque, pk=pk)
