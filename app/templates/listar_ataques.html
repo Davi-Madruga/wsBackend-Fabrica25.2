@@ -38,7 +38,11 @@
         {% endfor %}
     </table>
     {% else %}
-    <p>Seus Pokemons não sabem nenhum Ataque</p>
+    <div class='meio'>
+        <div class='mensagem'>
+            <p>Seus Pokemons não sabem nenhum Ataque</p>
+        </div>
+    </div>
     {% endif %}
     <a href="{% url 'procurar_ataque' %}"><button class='cadastrar'>Aprender</button></a>
 </body>

@@ -33,7 +33,11 @@
         {% endfor %}
     </table>
     {% else %}
-    <p>Nenhum Pokemon</p>
+    <div class='meio'>
+        <div class='mensagem'>
+            <p>Nenhum Pokemon Capturado</p>
+        </div>
+    </div>
     {% endif %}
     <br>
     <button class="cadastrar"><a href="{% url 'procurar_pokemon' %}">Procurar</a></button>
